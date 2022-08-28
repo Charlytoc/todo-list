@@ -10,22 +10,27 @@ const Home = () => {
 	const [todoList, setTodoList] = useState([])
 
 
-	// const deleteTodo = () => {
-
-	// 	let newTodo = todoList.filter( (item, index) => )
-	// }
+	const deleteTodoItem = (item) => {
+		const tempList = todoList.filter(itemList => itemList !== item)
+		setTodoList(tempList)
+	}
 
 	const addTodo = () => {
-		setTodoList([...todoList, todo])
+		todo === '' ? alert('No seas flojo, escribe algo') : setTodoList([...todoList, todo])
+		// if (todo === '') {
+		// 	alert('No seas flojo, escribe algo')
+		// }
+		// else {
+		// setTodoList([...todoList, todo])}
 	}
 
 	const deleteAll = () => {
 		setTodoList([])
 	}
 
-	const showFunc = () => {
-		console.log(e.target.value)
-	}
+	// const showFunc = () => {
+	// 	console.log(e.target.value)
+	// }
 
 	// function showDeleteButton () {
 	// 	todoList.length === 0 ? console.log("agrega algo") : console.log("ya lo hiciste")
@@ -43,6 +48,7 @@ const Home = () => {
   </div>
 <ul className="list-group">
 	{todoList.map( (item, index) => {
+		let toDeleteItem = item;
 		return <li key={index.toString()} className="list-group-item-dark bg-secondary text-light m-2 p-2">{item}<button type="button" className="btn-close float-end" ></button></li>
 	})}
 	
